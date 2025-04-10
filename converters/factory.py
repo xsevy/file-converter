@@ -3,7 +3,7 @@ from pathlib import Path
 
 import validators
 from converters.base import BaseConverter
-from converters.txt import UTF8Converter
+from converters.utf8 import UTF8Converter
 
 
 class ConverterType(enum.StrEnum):
