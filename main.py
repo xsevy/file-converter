@@ -9,7 +9,7 @@ from converters import ConverterType, create_converter
 def main(
     input_path: Annotated[Path, typer.Option()],
     output_path: Annotated[Path, typer.Option()],
-    converter_type: Annotated[ConverterType, typer.Option()] = ConverterType.TXT,
+    converter_type: Annotated[ConverterType, typer.Option()] = ConverterType.UTF8,
 ) -> None:
     converter = create_converter(converter_type=converter_type, input_path=input_path, output_path=output_path)
     converter.convert()
