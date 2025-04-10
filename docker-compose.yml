@@ -1,0 +1,5 @@
+services:
+  converter:
+    build: .
+    volumes:
+      - .:/usr/src/app  # Changed to match WORKDIR in Dockerfile
