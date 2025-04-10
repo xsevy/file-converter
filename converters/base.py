@@ -25,6 +25,9 @@ class BaseConverter(abc.ABC):
     def _convert(self) -> None:
         raise NotImplementedError
 
+    def _create_output_path(self) -> None:
+        self._output_path.parent.mkdir(parents=True, exist_ok=True)
+
     def convert(self) -> None:
         self.__validate()
         self._convert()
