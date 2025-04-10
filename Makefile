@@ -7,5 +7,5 @@ help:
 build:  ## Build the app
 	@docker compose build
 
-convert:  ## Convert file
+convert:  ## Convert file. Requires INPUT_PATH and OUTPUT_PATH positional arguments.
 	@docker compose run --rm converter python main.py --input-path ${INPUT_PATH} --output-path ${OUTPUT_PATH}
