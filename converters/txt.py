@@ -2,4 +2,5 @@ from converters.base import BaseConverter
 
 
 class TXTConverter(BaseConverter):
-    pass
+    def _convert(self) -> None:
+        pass

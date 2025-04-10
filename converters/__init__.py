@@ -1,1 +1,1 @@
-from .txt import TXTConverter  # noqa: F401
+from .factory import create_converter  # noqa: F401
