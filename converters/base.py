@@ -16,6 +16,9 @@ class BaseConverter(abc.ABC):
         self._validators = validators
 
     def __validate(self) -> None:
+        if not self._input_path.exists():
+            raise ValueError(f"Input file {self._input_path} does not exist")
+
         for validator in self._validators:
             validator(self._input_path, self._output_path)
 
