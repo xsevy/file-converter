@@ -1,7 +1,8 @@
 import abc
 from collections.abc import Sequence
 from pathlib import Path
-from typing import Callable
+
+from validators import ValidatorType, file_exists_validator
 
 
 class BaseConverter(abc.ABC):
@@ -9,17 +10,15 @@ class BaseConverter(abc.ABC):
         self,
         input_path: Path,
         output_path: Path,
-        validators: Sequence[Callable[[Path, Path], None]] = (),
+        validators: Sequence[ValidatorType] = (),
     ) -> None:
         self._input_path = input_path
         self._output_path = output_path
         self._validators = validators
+        self._default_validators: Sequence[ValidatorType] = (file_exists_validator,)
 
     def __validate(self) -> None:
-        if not self._input_path.exists():
-            raise ValueError(f"Input file {self._input_path} does not exist")
-
-        for validator in self._validators:
+        for validator in [*self._default_validators, *self._validators]:
             validator(self._input_path, self._output_path)
 
     @abc.abstractmethod
