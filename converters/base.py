@@ -15,7 +15,7 @@ class BaseConverter(abc.ABC):
         self._output_path = output_path
         self._validators = validators
 
-    def _validate(self) -> None:
+    def __validate(self) -> None:
         for validator in self._validators:
             validator(self._input_path, self._output_path)
 
@@ -24,5 +24,5 @@ class BaseConverter(abc.ABC):
         raise NotImplementedError
 
     def convert(self) -> None:
-        self._validate()
+        self.__validate()
         self._convert()
